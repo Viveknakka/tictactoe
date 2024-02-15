@@ -1,0 +1,43 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+body{
+    background-color: bisque;
+    text-align:center;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding:5vmin;
+}
+.board{
+    height:60vmin;
+    width:60vmin;
+    border:2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+   
+}
+.cell{
+    height:17vmin;
+    width:17vmin;
+    font-size: 10vmin;
+    background-color: aquamarine;
+}
+#reset-btn{
+    padding:1vmin;
+    color:white;
+    margin-bottom: 2vmin;
+    background-color: black;
+}
+#new-btn{
+    padding:1vmin;
+    margin-top:2vmin;
+    color:white;
+    background-color: black;
+}
