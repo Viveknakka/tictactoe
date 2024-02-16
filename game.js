@@ -1,5 +1,9 @@
 let cells = document.querySelectorAll(".cell");
+let resetbtn=document.querySelector("#reset");
+let newbtn=document.querySelector("#new");
+let winnerText=document.querySelector("#winner");
 let turnO = true; // true represents X, false represents O
+let array =[" "];
 const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -11,14 +15,30 @@ const winPatterns = [
     [2, 4, 6]
 ];
 
-cells.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        btn.innerText = turnO ? "X" : "O";
-        turnO = !turnO;
-        btn.disabled = true;
-        checkWinner(); // to check winner after every step
-    });
-});
+let showWinner=(winner)=>{
+    winnerText.style.display="block";
+    winnerText.innerHTML=`Congratulations winner is ${winner}`;
+}
+let disableCells=()=>{
+    for(let cell of cells){
+        cell.disabled=true;
+    }
+}
+let enableCells=()=>{
+    for(let cell of cells){
+        cell.disabled=false;
+        cell.innerText="";
+    }
+}
+let newgame=()=>{
+    turnO=true;
+    enableCells();
+    winnerText.style.display="none";
+    //console.log("newgame clicked");
+}
+let reset=()=>{
+    enableCells();
+}
 
 const checkWinner = () => {
     for (let i = 0; i < winPatterns.length; i++) {
@@ -36,22 +56,38 @@ const checkWinner = () => {
         //console.log("X=" + X + " , O=" + O);
 
         if (X === 3) {
-            alert("X wins the Game");
-            window.location.reload();
+           // alert("X wins the Game");
+            disableCells();
+            showWinner("X");
+           
+           // window.location.reload();
         
 
         } else if (O === 3) {
-            alert("O wins the Game");
-            window.location.reload();
+           // alert("O wins the Game");
+            disableCells();
+            showWinner("O");
+          
+            //window.location.reload();
           
         } 
     }
 };
-const newgame=()=>{
-    //window.location.reload();
-}
-let reset=document.querySelector("#reset-btn");
-console.log(reset);
-reset.onclick=newgame();
-let newbtn=document.querySelector("#new-btn");
-newbtn.addEventListener("click",newgame());
+
+
+
+console.log(newbtn)
+newbtn.onclick=newgame;
+resetbtn.addEventListener("click",newgame);
+cells.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        btn.innerText = turnO && btn.innerHTML=="" ? "X" : "O";
+        turnO = !turnO;
+        btn.disabled = true;
+        const index = Array.from(cells).indexOf(btn);
+        const pos=index+1;
+       // console.log("index"+index);
+        array.push("X")
+        checkWinner(); // to check winner after every step
+    });
+});

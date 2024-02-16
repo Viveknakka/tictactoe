@@ -29,15 +29,26 @@ body{
     font-size: 10vmin;
     background-color: aquamarine;
 }
-#reset-btn{
+#reset{
     padding:1vmin;
     color:white;
     margin-bottom: 2vmin;
     background-color: black;
 }
-#new-btn{
+#reset:hover{
+    background-color: aliceblue;
+    color:black;
+}
+#new:hover{
+    background-color: aliceblue;
+    color:black;
+}
+#new{
     padding:1vmin;
     margin-top:2vmin;
     color:white;
     background-color: black;
+}
+#winner{
+    display: none;
 }
