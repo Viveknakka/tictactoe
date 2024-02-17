@@ -4,6 +4,7 @@ let newbtn=document.querySelector("#new");
 let winnerText=document.querySelector("#winner");
 let turnO = true; // true represents X, false represents O
 let array =[" "];
+let count=0;
 const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -32,6 +33,7 @@ let enableCells=()=>{
 }
 let newgame=()=>{
     turnO=true;
+    count=0;
     enableCells();
     winnerText.style.display="none";
     //console.log("newgame clicked");
@@ -39,8 +41,13 @@ let newgame=()=>{
 let reset=()=>{
     enableCells();
 }
+let draw=()=>{
+    winnerText.innerHTML="Draw match...";
+    winnerText.style.display="block";
+}
 
 const checkWinner = () => {
+    let flag=false;
     for (let i = 0; i < winPatterns.length; i++) {
         let X = 0, O = 0;
         for (let j = 0; j < 3; j++) {
@@ -59,6 +66,7 @@ const checkWinner = () => {
            // alert("X wins the Game");
             disableCells();
             showWinner("X");
+            flag=true;
            
            // window.location.reload();
         
@@ -67,10 +75,15 @@ const checkWinner = () => {
            // alert("O wins the Game");
             disableCells();
             showWinner("O");
-          
+          flag=true;
             //window.location.reload();
           
         } 
+      
+    }
+    if(flag == false){
+        if(count === 9)
+        draw();
     }
 };
 
@@ -86,8 +99,11 @@ cells.forEach((btn) => {
         btn.disabled = true;
         const index = Array.from(cells).indexOf(btn);
         const pos=index+1;
+
        // console.log("index"+index);
         array.push("X")
+        count++;
         checkWinner(); // to check winner after every step
+        
     });
 });
