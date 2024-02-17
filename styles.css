@@ -43,8 +43,7 @@ body{
 #winner{
     display: none;
     width:60vmin;
-    padding:20vmin;
-    margin: 20vmin;
+    margin-top:30vmin;
     height: 60vmin;
 }
 
