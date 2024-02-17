@@ -22,6 +22,7 @@
     let showWinner=(winner)=>{
         winnerText.style.display="block";
         winnerText.innerHTML=`Congratulations winner is ${winner}`;
+        count=-1;
     }
     let disableCells=()=>{
         for(let cell of cells){
@@ -38,8 +39,9 @@
         turnO=true;
         count=0;
         enableCells();
-        buffer= [];s
+        buffer= [];
         temo= [];
+        //winnerText.innerText="";
         winnerText.style.display="none";
         //console.log("newgame clicked");
     }
@@ -51,7 +53,7 @@
         winnerText.style.display="block";
     }
     let undo = () => {
-        if (buffer.length === 0)
+        if (buffer.length === 0 || count === -1)
             return;
         let obj = buffer.pop();
         let index = obj.index;
@@ -66,7 +68,7 @@
     };
     
     let redo = () => {
-        if (temp.length === 0)
+        if (temp.length === 0 || count ===-1)
             return;
         let obj = temp.pop();
         let index = obj.index;
@@ -144,8 +146,8 @@
             buffer.push(obj);
         //console.log(array);
             count++;
-            console.log("buffer:"+buffer+"\ntemp"+temp);
-            console.log("\nbufferlengh:"+buffer.length+"\ntemplengh:"+temp.length);
+           // console.log("buffer:"+buffer+"\ntemp"+temp);
+            //console.log("\nbufferlengh:"+buffer.length+"\ntemplengh:"+temp.length);
             checkWinner(); // to check winner after every step
             
         });
