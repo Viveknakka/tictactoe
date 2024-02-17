@@ -29,6 +29,26 @@ body{
     font-size: 10vmin;
     background-color: aquamarine;
 }
+.btn{
+    padding:1vmin;
+    margin:1vmin;
+    color:white;
+    margin-bottom: 2vmin;
+    background-color: black;
+}
+.btn:hover{
+    background-color: aliceblue;
+    color:black;
+}
+#winner{
+    display: none;
+    width:60vmin;
+    padding:20vmin;
+    margin: 20vmin;
+    height: 60vmin;
+}
+
+/*
 #reset{
     padding:1vmin;
     color:white;
@@ -49,6 +69,5 @@ body{
     color:white;
     background-color: black;
 }
-#winner{
-    display: none;
-}
+
+}*/
